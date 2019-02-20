@@ -6,5 +6,10 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         todos: []
+    },
+    getters: {
+        getLength: function (state) {
+            return state.todos.length;
+        }
     }
 })

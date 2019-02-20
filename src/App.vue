@@ -4,6 +4,7 @@
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
     <TodoList v-on:removeTodo="removeTodo"></TodoList>
     <TodoFooter v-on:clearAllTodo="clearAllTodo"></TodoFooter>
+    <TodoSummary></TodoSummary>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import TodoHeader from "./components/TodoHeader.vue";
 import TodoInput from "./components/TodoInput.vue";
 import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
+import TodoSummary from "./components/TodoSummary.vue";
 
 export default {
   name: "app",
@@ -40,7 +42,8 @@ export default {
     TodoHeader,
     TodoInput,
     TodoList,
-    TodoFooter
+    TodoFooter,
+    TodoSummary
   }
 };
 </script>
