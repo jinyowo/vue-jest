@@ -22,6 +22,7 @@ export const store = new Vuex.Store({
             return state.todos.splice(payload, 1);
         },
         clearAllTodo: function (state, payload) {
+            localStorage.clear();
             return state.todos = [];
         }
     }

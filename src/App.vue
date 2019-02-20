@@ -14,6 +14,7 @@ import TodoInput from "./components/TodoInput.vue";
 import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
 import TodoSummary from "./components/TodoSummary.vue";
+import { mapMutations } from "vuex";
 
 export default {
   name: "app",
@@ -25,6 +26,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["clearAllTodo"]),
     addTodo(todo) {
       localStorage.setItem(todo, todo);
       this.$store.commit("addTodo", todo);
@@ -32,10 +34,6 @@ export default {
     removeTodo(todo, index) {
       localStorage.removeItem(todo);
       this.$store.commit("removeTodo", index);
-    },
-    clearAllTodo() {
-      localStorage.clear();
-      this.$store.commit("clearAllTodo");
     }
   },
   components: {
