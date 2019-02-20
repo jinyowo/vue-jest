@@ -1,7 +1,7 @@
 <template>
   <section>
     <transition-group name="list" tag="ul">
-      <li class="shadow" v-for="(todo, index) in propsdata" :key="todo">
+      <li class="shadow" v-for="(todo, index) in this.$store.state.todos" :key="todo">
         <i class="checkBtn fa fa-check" aria-hidden="true"></i>
         {{ todo }}
         <span
@@ -18,7 +18,6 @@
 
 <script>
 export default {
-  props: ["propsdata"],
   methods: {
     removeTodo(todo, index) {
       this.$emit("removeTodo", todo, index);
