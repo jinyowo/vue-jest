@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
-    <TodoList v-on:removeTodo="removeTodo"></TodoList>
+    <TodoList v-on:removeTodo="delayRemoveTodo"></TodoList>
     <TodoFooter v-on:clearAllTodo="clearAllTodo"></TodoFooter>
     <TodoSummary></TodoSummary>
   </div>
@@ -14,7 +14,7 @@ import TodoInput from "./components/TodoInput.vue";
 import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
 import TodoSummary from "./components/TodoSummary.vue";
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 
 export default {
   name: "app",
@@ -27,13 +27,10 @@ export default {
   },
   methods: {
     ...mapMutations(["clearAllTodo"]),
+    ...mapActions(["delayRemoveTodo"]),
     addTodo(todo) {
       localStorage.setItem(todo, todo);
       this.$store.commit("addTodo", todo);
-    },
-    removeTodo(todo, index) {
-      localStorage.removeItem(todo);
-      this.$store.dispatch("delayRemoveTodo", index);
     }
   },
   components: {

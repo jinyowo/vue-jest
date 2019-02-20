@@ -35,8 +35,9 @@ export const store = new Vuex.Store({
         // },
         // 삭제를 1초후 진행
         delayRemoveTodo: function (context, payload) {
+            localStorage.removeItem(payload.todo);
             return setTimeout(function () {
-                context.commit('removeTodo', payload);
+                context.commit('removeTodo', payload.index);
             }, 1000);
         }
     }
