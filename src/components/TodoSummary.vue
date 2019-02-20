@@ -1,15 +1,15 @@
 <template>
   <div class="summaryContainer">
-    <span class="summary">할일 목록: {{ todosLength }}</span>
+    <span class="summary">할일 목록: {{ getLength }}</span>
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "todoSummary",
   computed: {
-    todosLength() {
-      return this.$store.getters.getLength;
-    }
+    ...mapGetters(["getLength"])
   }
 };
 </script>
