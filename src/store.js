@@ -25,5 +25,19 @@ export const store = new Vuex.Store({
             localStorage.clear();
             return state.todos = [];
         }
+    },
+    // 비동기 처리 로직 선언
+    // mutations의 메소드를 commit하는 구조
+    actions: {
+        // 상태 변화를 추적하기 위해 결국 mutation의 메서드를 commit한다.
+        // addTodo: function(context) {
+        //     return context.commit('addTodo');
+        // },
+        // 삭제를 1초후 진행
+        delayRemoveTodo: function (context, payload) {
+            return setTimeout(function () {
+                context.commit('removeTodo', payload);
+            }, 1000);
+        }
     }
 })

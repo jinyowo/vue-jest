@@ -33,7 +33,7 @@ export default {
     },
     removeTodo(todo, index) {
       localStorage.removeItem(todo);
-      this.$store.commit("removeTodo", index);
+      this.$store.dispatch("delayRemoveTodo", index);
     }
   },
   components: {
