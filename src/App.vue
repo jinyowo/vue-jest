@@ -20,22 +20,22 @@ export default {
   created() {
     if (localStorage.length > 0) {
       for (var i = 0; i < localStorage.length; i++) {
-        this.$store.state.todos.push(localStorage.key(i));
+        this.$store.commit("addTodo", localStorage.key(i));
       }
     }
   },
   methods: {
     addTodo(todo) {
       localStorage.setItem(todo, todo);
-      this.$store.state.todos.push(todo);
+      this.$store.commit("addTodo", todo);
     },
     removeTodo(todo, index) {
       localStorage.removeItem(todo);
-      this.$store.state.todos.splice(index, 1);
+      this.$store.commit("removeTodo", index);
     },
     clearAllTodo() {
       localStorage.clear();
-      this.$store.state.todos = [];
+      this.$store.commit("clearAllTodo");
     }
   },
   components: {
